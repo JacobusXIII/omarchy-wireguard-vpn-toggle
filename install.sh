@@ -198,7 +198,7 @@ check_wireguard_configs() {
     fi
   else
     local config_count
-    config_count=$(find "${VPN_CONFIGS_PATH}" -maxdepth 1 -name "*.conf" 2>/dev/null | wc -l)
+    config_count=$(sudo find "${VPN_CONFIGS_PATH}" -maxdepth 1 -name "*.conf" 2>/dev/null | wc -l)
     
     if [[ ${config_count} -eq 0 ]]; then
       print_warning "No WireGuard configurations found in ${VPN_CONFIGS_PATH}"

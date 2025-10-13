@@ -6,7 +6,7 @@ CONFIGS_PATH="/etc/wireguard"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Find available VPN configurations
-mapfile -t configs < <(find "${CONFIGS_PATH}" -maxdepth 1 -name "*.conf" -exec basename {} .conf \; 2>/dev/null | sort)
+mapfile -t configs < <(sudo find "${CONFIGS_PATH}" -maxdepth 1 -name "*.conf" -exec basename {} .conf \; 2>/dev/null | sort)
 
 if [[ ${#configs[@]} -eq 0 ]]; then
   echo "No WireGuard configurations found in ${CONFIGS_PATH}"
