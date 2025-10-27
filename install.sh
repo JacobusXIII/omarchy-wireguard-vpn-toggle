@@ -369,7 +369,7 @@ configure_sudoers() {
   print_warning "Sudoers Configuration Required"
   echo ""
   print_info "To enable passwordless VPN toggling, wg-quick needs to be added to sudoers."
-  print_warning "This allows running 'wg-quick' commands without entering your password."
+  print_warning "This allows running 'wg-quick' & 'find ${VPN_CONFIGS_PATH}' commands without entering your password."
   echo ""
   
   read -p "Would you like to configure sudoers now? (y/N) " -n 1 -r </dev/tty
@@ -388,8 +388,8 @@ configure_sudoers() {
       user_group="wheel"
       print_warning "Defaulting to 'wheel' group. You may need to adjust this."
     fi
-    
-    local sudoers_line="%${user_group} ALL=(ALL) NOPASSWD: /usr/bin/wg-quick"
+
+    local sudoers_line="%${user_group} ALL=(ALL) NOPASSWD: /usr/bin/wg-quick, /usr/bin/find ${VPN_CONFIGS_PATH} -maxdepth 1 -name * -exec basename {} .conf \\\;"
     local temp_sudoers
     temp_sudoers=$(mktemp)
     
