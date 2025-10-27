@@ -29,5 +29,5 @@ fi
 if ip link show | grep -q "${VPN_NAME}"; then
   output_status "connected" "VPN Connected: ${VPN_NAME}"
 else
-  output_status "disconnected" "VPN Disconnected"
+  output_status "disconnected" "VPN Disconnected: ${VPN_NAME}"
 fi
