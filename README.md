@@ -15,12 +15,13 @@ Based on the guide from [Omarchy Discussion #1366](https://github.com/basecamp/o
 
 ## Prerequisites
 
+**⚠️ This tool is designed specifically for [Omarchy](https://github.com/basecamp/omarchy) setups only.**
+
+- **Omarchy** - This VPN toggle is designed to integrate with Omarchy's Waybar configuration
 - **Bash** 4.0+
 - **WireGuard** (`wireguard-tools`)
-- **Omarchy's Waybar**
 - **jq** (JSON processor for safe config manipulation)
 - **WireGuard configuration files** in `/etc/wireguard/`
-- A Wayland compositor running Omarchy/Waybar (Hyprland, Sway, etc.)
 
 ### Install Dependencies
 
@@ -78,12 +79,16 @@ If you haven't already, you need WireGuard configuration files in `/etc/wireguar
    ```bash
    sudo cp your-config.conf /etc/wireguard/
    ```
+4. Set proper permissions (600 or stricter):
+   ```bash
+   sudo chmod 600 /etc/wireguard/*.conf
+   ```
 
 See the [ProtonVPN WireGuard guide](https://protonvpn.com/support/wireguard-linux) for detailed instructions.
 
 **For other VPN providers:**
 
-Most VPN providers offer WireGuard configuration files. Download them and place in `/etc/wireguard/`.
+Most VPN providers offer WireGuard configuration files. Download them and place in `/etc/wireguard/`, then ensure they have proper permissions (600 or stricter) with `sudo chmod 600 /etc/wireguard/*.conf`.
 
 #### 3. Run the Installer
 
@@ -349,7 +354,7 @@ for script in scripts/*.sh; do bash -n "$script"; done
 
 Based on the manual setup guide by [@rulonder](https://github.com/rulonder) in [Omarchy Discussion #1366](https://github.com/basecamp/omarchy/discussions/1366).
 
-With a little help from [Cursor AI](https://cursor.com) - a great way to enforce Omarchy bash practices, maintain code consistency, and write comprehensive documentation. 🤖
+This project was built with a little help from [Cursor AI](https://cursor.com) - a great way to enforce Omarchy bash practices, maintain code consistency, and write comprehensive documentation. 🤖
 
 ## License
 
